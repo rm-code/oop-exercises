@@ -7,6 +7,6 @@ public class Exercise5 {
     System.out.println(z += x + y);       // z = z + x + y = 8 + 3 + 2 (13)
     System.out.println(z += x += y);      // z = z + x + y = 13 + 3 + 2 (z = 18, x = 5)
     System.out.println(z += x += y = 1);  // z = z + x + y = 18 + 5 + 1 (z = 24, x = 6, y = 1)
-    System.out.println(x *= x = 2);       // 4 ??
+    System.out.println(x *= x = 2);       // x = x * (x = 2) = 6 * (2) => 12
   }
 }
