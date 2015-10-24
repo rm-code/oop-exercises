@@ -1,5 +1,4 @@
-/* OOP Lesson 3 - Exercise 4 */
-public class MoneyCounter {
+public class Exercise4 {
     public static void main(String[] args) {
         float money = 4.73f; // The value to calculate the change for.
 
