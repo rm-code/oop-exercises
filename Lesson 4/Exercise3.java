@@ -1,39 +1,24 @@
 public class Exercise3 {
-  public static void main (String[] args) {
-    int a = 200, b = 300, c = 640;
+    public static void main(String[] args) {
+        int x = 2, y = 8, z = 4; // The values to sort.
 
-    int sortedA = 0, sortedB = 0, sortedC = 0;
-
-    // if a > b and a > c then we just sort b and c
-    if ((a > b) && (a > c)) { // a must be the biggest number
-      sortedA = a;
-      if (b > c) {
-        sortedB = b;
-        sortedC = c;
-      } else {
-        sortedB = c;
-        sortedC = b;
-      }
-    } else if ((a < b) && (a < c)) { // a must be the smallest number
-      sortedC = a;
-      if (b > c) {
-        sortedA = b;
-        sortedB = c;
-      } else {
-        sortedA = c;
-        sortedB = b;
-      }
-    } else if (((a < b) && (a > c)) || ((a > b) && (a < c ))) { // a is in between
-      sortedB = a;
-      if (b > c) {
-        sortedA = b;
-        sortedC = c;
-      } else {
-        sortedA = c;
-        sortedC = b;
-      }
+        if (x > y && x > z) { // Check if x is the biggest number.
+            // If x is the biggest number we only need to compare y and z.
+            if (y > z) {
+                System.out.println(x + ", " + y + ", " + z);
+            } else {
+                System.out.println(x + ", " + z + ", " + y);
+            }
+        } else if (x < y && x < z) { // Check if x is the smallest number.
+            if (y > z) {
+                System.out.println(y + ", " + z + ", " + x);
+            } else {
+                System.out.println(z + ", " + y + ", " + x);
+            }
+        } else if (x < z && x > y) { // Check if x lies between z and y with z being the bigger and y the smaller number.
+            System.out.println(z + ", " + x + ", " + y);
+        } else if (x < y && x > z) { // Check if x lies between z and y with y being the bigger and z the smaller number.
+            System.out.println(y + ", " + x + ", " + z);
+        }
     }
-
-    System.out.println(sortedA + ", " + sortedB + ", " + sortedC);
-  }
 }
