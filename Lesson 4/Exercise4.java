@@ -8,17 +8,24 @@ public class Exercise4 {
         b = Integer.parseInt(args[1]);
         c = Integer.parseInt(args[2]);
 
+        // Exit early if all values are zero.
+        if (a == 0 && b == 0 && c == 0) {
+            System.out.println("A quadratic equation with the values a: " + a + ", b: " + b + ", c: " + c + " has infinite solutions");
+            return;
+        }
+
         // Calculate the discriminant.
-        float sqrt = (float) Math.sqrt(Math.pow(b, 2) - (4 * a * c));
+        int discriminant = (int) Math.pow(b, 2) - (4 * a * c);
+        float sqrt = (float) Math.sqrt(discriminant);
 
         System.out.print("A quadratic equation with the values a: " + a + ", b: " + b + ", c: " + c);
 
         // Base the results on the discriminant.
-        if (sqrt > 0) {
+        if (discriminant > 0) {
             x1 = (-b + sqrt) / (2 * a);
             x2 = (-b - sqrt) / (2 * a);
             System.out.println(" has the two solutions: " + x1 + ", " + x2);
-        } else if (sqrt == 0) {
+        } else if (discriminant == 0) {
             x1 = (-b + sqrt) / (2 * a);
             System.out.println(" has one solution: " + x1);
         } else {
