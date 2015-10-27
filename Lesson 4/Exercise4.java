@@ -8,13 +8,16 @@ public class Exercise4 {
         b = Integer.parseInt(args[1]);
         c = Integer.parseInt(args[2]);
 
-        // Exit early if all values are zero.
+        // Handle special cases.
         if (a == 0 && b == 0 && c == 0) {
             System.out.println("A quadratic equation with the values a: " + a + ", b: " + b + ", c: " + c + " has infinite solutions");
-            return;
+            return; // Exit here.
+        } else if (a == 0) {
+            System.out.println("A linear equation with the values b: " + b + ", c: " + c + " has one solution: " + ( (float) -c / (float) b ) );
+            return; // Exit here.
         }
 
-        // Calculate the discriminant.
+        // Calculate the discriminant and its square root.
         int discriminant = (int) Math.pow(b, 2) - (4 * a * c);
         float sqrt = (float) Math.sqrt(discriminant);
 
