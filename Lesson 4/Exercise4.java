@@ -15,6 +15,8 @@ public class Exercise4 {
         } else if (a == 0) {
             System.out.println("A linear equation with the values b: " + b + ", c: " + c + " has one solution: " + ( (float) -c / (float) b ) );
             return; // Exit here.
+        } else if (a == 0 && b == 0 && c != 0) {
+            System.out.println("There are no real solutions.");
         }
 
         // Calculate the discriminant and its square root.
