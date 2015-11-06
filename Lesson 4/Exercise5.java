@@ -46,6 +46,12 @@ public class Exercise5 {
         // Calculate the week we are in.
         week = totalDays / DAYS_PER_WEEK;
 
+        // Make sure we don't start a week 0.
+        int rmnt = totalDays % DAYS_PER_WEEK;
+        if (rmnt != 0) {
+            week++;
+        }
+
         System.out.println("Calendar Week: " + week);
     }
 }
