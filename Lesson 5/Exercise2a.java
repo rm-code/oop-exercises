@@ -1,4 +1,4 @@
-public class Exercise2 {
+public class Exercise2a {
     static double calculateFaculty(int number) {
         double fac = 1;
 
