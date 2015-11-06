@@ -1,4 +1,4 @@
-public class Exercise1 {
+public class Exercise1a {
     static void printChain(char toPrint, int start, int length) {
         String output = "";
 
