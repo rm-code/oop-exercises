@@ -1,11 +1,15 @@
 public class Exercise2a {
     static double calculateFaculty(int number) {
-        double fac = 1;
 
+        // 0! is always 1.
+        if (number == 0) {
+            return 1;
+        }
+
+        double fac = 1;
         for (int i = 1; i <= number; i++) {
             fac *= i;
         }
-
         return fac;
     }
 
