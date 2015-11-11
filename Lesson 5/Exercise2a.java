@@ -1,24 +1,25 @@
 public class Exercise2a {
-    static double calculateFaculty(int number) {
+    /**
+     * Calculates the factorial of a number. If the number is smaller or equal
+     * zero the function will return a value of one.
+     */
+    static double calculateFactorial(int number) {
+        double factorial = 1;
 
-        // 0! is always 1.
-        if (number == 0) {
-            return 1;
+        if (number > 0) {
+            for (int i = 1; i <= number; i++) {
+                factorial *= i;
+            }
         }
 
-        double fac = 1;
-        for (int i = 1; i <= number; i++) {
-            fac *= i;
-        }
-        return fac;
+        return factorial;
     }
 
     public static void main(String[] args) {
         final int NUMBER = 5;
 
-        // Calculate faculty.
-        double result = calculateFaculty(NUMBER);
+        double result = calculateFactorial(NUMBER);
 
-        System.out.println("The faculty of " + NUMBER + " is " + result);
+        System.out.println("The Factorial of " + NUMBER + " is " + result);
     }
 }
