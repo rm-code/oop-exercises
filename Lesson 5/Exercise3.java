@@ -1,15 +1,14 @@
 import java.util.Scanner;
 
 public class Exercise3 {
-    static long power(int base, int exponent) {
-        // When the exponent is zero we end the recursion by returning one.
+    static double power(int base, int exponent) {
         if (exponent == 0) {
-            return 1;
+            return 1.0;
+        } else if (exponent > 0) {
+            return base * power(base, exponent - 1);
+        } else {
+            return 1.0 / power(base, exponent * -1);
         }
-
-        // Recursively call the function with the exponent minus one and
-        // multiply the result with our base.
-        return base * power(base, exponent - 1);
     }
 
     public static void main(String[] args) {
@@ -21,7 +20,7 @@ public class Exercise3 {
         System.out.print("Please enter the exponent (integer): ");
         int exponent = input.nextInt();
 
-        long result = power(base, exponent);
+        double result = power(base, exponent);
 
         System.out.println("The result of " + base + "^" + exponent + " is " + result + ".");
     }
