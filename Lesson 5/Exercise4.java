@@ -5,10 +5,7 @@ public class Exercise4 {
         long steps = 1;
 
         if (plates > 1) {
-            steps += move(plates - 1);
-            steps += move(plates - 1);
-
-            return steps;
+            return steps + (move(plates - 1) * 2);
         }
 
         return steps;
