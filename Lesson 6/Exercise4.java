@@ -15,9 +15,9 @@ public class Exercise4 {
 
             // Iterate over the newly created array and fill it with values.
             for (int j = 0; j < tmp.length; j++) {
-                int a = (j - 1 < 0) ? 0 : line[j - 1];
-                int b = (j > line.length - 1 ) ? 0 : line[j];
-                tmp[j] = (a + b == 0) ? 1 : a + b;
+                int a  = (j - 1 < 0)            ? 0 : line[j - 1];
+                int b  = (j > line.length - 1 ) ? 0 : line[j];
+                tmp[j] = (a + b == 0)           ? 1 : a + b;
             }
 
             // This adds whitespace in front of each line to create the triangle.
