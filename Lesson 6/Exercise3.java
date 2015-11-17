@@ -12,12 +12,7 @@ public class Exercise3 {
             // been made by the end of the nested loop.
             done = true;
 
-            for (int i = 0; i < toSort.length; i++) {
-                // Check if we reached the end of the table.
-                if (i == toSort.length - 1) {
-                    break;
-                }
-
+            for (int i = 0; i < toSort.length - 1; i++) {
                 // Switch i with i + 1 if i is bigger.
                 if (toSort[i] > toSort[i + 1]) {
                     int tmp = toSort[i];
