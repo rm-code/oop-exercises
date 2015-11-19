@@ -5,8 +5,15 @@ public class Planner {
         Room room = new Room();
 
         Scanner input = new Scanner(System.in);
+
+        System.out.println("Menu:");
+        System.out.println("(0) Add new lesson");
+        System.out.println("(1) Remove lesson");
+        System.out.println("(2) Show plan");
+        System.out.println("(3) Exit");
+
         while (true) {
-            System.out.print("Do you want to add (0) or remove (1) a lesson? Press (2) to exit the program: ");
+            System.out.print("> ");
 
             int selection = input.nextInt();
 
@@ -19,10 +26,12 @@ public class Planner {
                 int hour = input.nextInt();
                 room.remove(hour);
             } else if (selection == 2) {
+                room.showPlan();
+            } else if (selection == 3) {
                 break;
+            } else {
+                System.out.println("Please enter a valid option (0, 1, 2 or 3)");
             }
-
-            room.showPlan();
         }
     }
 }
