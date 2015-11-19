@@ -1,7 +1,7 @@
 public class Account {
-    String owner;
-    float  balance;
-    long   number;
+    private String owner;
+    private float  balance;
+    private long   number;
 
     public Account( String owner, long number ) {
         this.owner  = owner;
