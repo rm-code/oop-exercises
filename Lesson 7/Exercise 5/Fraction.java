@@ -46,6 +46,10 @@ public class Fraction {
         return this.divisor;
     }
 
+    public String toString() {
+        return this.dividend + "/" + this.divisor;
+    }
+
     public static Fraction add( Fraction a, Fraction b ) {
         return new Fraction( a.getDividend() * b.getDivisor() + b.getDividend() * a.getDivisor(), a.getDivisor() * b.getDivisor() );
     }
