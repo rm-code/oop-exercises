@@ -1,7 +1,7 @@
 public class Fraction {
-    int dividend;
-    int divisor;
-    int sign = 1;
+    private int dividend;
+    private int divisor;
+    private int sign = 1;
 
     public Fraction( int dividend, int divisor ) {
         // Store a negative sign if either the dividend or the divisor are negative.
