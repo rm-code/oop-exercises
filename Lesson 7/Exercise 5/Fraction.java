@@ -51,18 +51,18 @@ public class Fraction {
     }
 
     public static Fraction add( Fraction a, Fraction b ) {
-        return new Fraction( a.getDividend() * b.getDivisor() + b.getDividend() * a.getDivisor(), a.getDivisor() * b.getDivisor() );
+        return new Fraction( a.dividend * b.divisor + b.dividend * a.divisor, a.divisor * b.divisor );
     }
 
     public static Fraction sub( Fraction a, Fraction b ) {
-        return new Fraction( a.getDividend() * b.getDivisor() - b.getDividend() * a.getDivisor(), a.getDivisor() * b.getDivisor() );
+        return new Fraction( a.dividend * b.divisor - b.dividend * a.divisor, a.divisor * b.divisor );
     }
 
     public static Fraction mul( Fraction a, Fraction b ) {
-        return new Fraction( a.getDividend() * b.getDividend(), a.getDivisor()  * b.getDivisor() );
+        return new Fraction( a.dividend * b.dividend, a.divisor * b.divisor );
     }
 
     public static Fraction div( Fraction a, Fraction b ) {
-        return new Fraction( a.getDividend() * b.getDivisor(), a.getDivisor()  * b.getDividend() );
+        return new Fraction( a.dividend * b.divisor, a.divisor * b.dividend );
     }
 }
