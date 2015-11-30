@@ -1,11 +1,11 @@
 public class Exercise3_Alt {
+
     /**
      * BubbleSort
      * Tables are mutable therefore we don't need to return the table at the end
      * of the function.
     **/
-
-    public static void lessEfficientBubbleSort(int[] toSort) {
+    public static void sort(int[] toSort) {
         int temp;
         for (int i = 1; i < toSort.length; i++) {
             for (int j = 0; j < toSort.length - i; j++) {
@@ -38,7 +38,7 @@ public class Exercise3_Alt {
         System.out.println("The following array will be sorted: ");
         dumpArray(toSort);
 
-        lessEfficientBubbleSort(toSort);
+        sort(toSort);
 
         System.out.println("Result: ");
         dumpArray(toSort);
