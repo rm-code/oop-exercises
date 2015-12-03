@@ -3,6 +3,9 @@ public class Exercise3 {
      * BubbleSort
      * Tables are mutable therefore we don't need to return the table at the end
      * of the function.
+     * NOTE: This would be more efficient with a second for-loop because we can
+     *          ignore the first (or last) item in the array because we know it
+     *          has to be the smallest (biggest) (See Exercise3_Alt.java).
     **/
     static void sort(int[] toSort) {
         boolean done = false; // This will end the while loop when sorting is done.
