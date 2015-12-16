@@ -5,7 +5,7 @@ public class Fraction_Alt {
 
     public Fraction_Alt( int dividend, int divisor ) {
         // Store a negative sign if either the dividend or the divisor are negative.
-        int sign = ( dividend < 0 || divisor < 0 ) ? -1 : 1;
+        int sign = ( dividend < 0 ^ divisor < 0 ) ? -1 : 1;
 
         // Store unsigned variants of dividend and divisor.
         this.dividend = Math.abs( dividend );
