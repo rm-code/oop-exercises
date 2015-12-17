@@ -8,8 +8,8 @@ public class Main {
         while ( true ) {
             String line = input.nextLine();
             if (line.length() == 0) {
-                light.change();
                 System.out.println( light.getColor() );
+                light.change();
             }
         }
     }
