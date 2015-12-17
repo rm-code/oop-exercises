@@ -1,7 +1,6 @@
 public class Fraction {
     private int dividend;
     private int divisor;
-    private int sign = 1;
 
     public Fraction( int dividend, int divisor ) {
         // Store a negative sign if either the dividend or the divisor are negative.
@@ -11,8 +10,8 @@ public class Fraction {
         this.dividend = Math.abs( dividend );
         this.divisor  = Math.abs( divisor  );
 
-         // Calculate greatest common divisor.
-        int gcd = euclid( this.dividend, this.divisor );
+        // Calculate greatest common divisor.
+        int gcd = euclid( Math.max( this.dividend, this.divisor ), Math.min( this.dividend, this.divisor ) );
 
         // Shorten the fraction.
         this.dividend = sign * this.dividend / gcd;
@@ -21,21 +20,14 @@ public class Fraction {
         System.out.println("Created " + this.dividend + "/" + this.divisor);
     }
 
-    private int euclid( int na, int nb ) {
-        int a = Math.max( na, nb );
-        int b = Math.min( na, nb );
-        int u = a - b;
-        int v = b;
-
-        while ( u != 0 ) {
-            a = Math.max( u, v );
-            b = Math.min( u, v );
-
-            u = a - b;
-            v = b;
+    private int euclid( int a, int b ) {
+        while ( a % b != 0 ) {
+            int r = a % b;
+            a = b;
+            b = r;
         }
 
-        return v;
+        return b;
     }
 
     public int getDividend() {
