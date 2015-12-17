@@ -23,6 +23,6 @@ public class Circle extends GeometryObject {
     }
 
     public String toString() {
-        return super.toString() + " Radius: " + radius;
+        return super.toString() + "\nRadius: " + radius + "\n";
     }
 }

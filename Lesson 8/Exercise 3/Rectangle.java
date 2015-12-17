@@ -33,6 +33,6 @@ public class Rectangle extends GeometryObject {
     }
 
     public String toString() {
-        return super.toString() + " Width: " + width + " Height: " + height;
+        return super.toString() + "\nWidth: " + width + "\nHeight: " + height + "\n";
     }
 }

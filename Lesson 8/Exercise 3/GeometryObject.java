@@ -20,6 +20,6 @@ public abstract class GeometryObject {
     }
 
     public String toString() {
-        return "Type: " + type + " Color: " + color;
+        return "Type: " + type + "\nColor: " + color + "\nCircumference: " + getCircumference() + "\nArea: " + getArea();
     }
 }
