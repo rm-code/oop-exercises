@@ -6,7 +6,7 @@ public class Main {
             throw new IllegalArgumentException();
         }
 
-        return ( 1 / ( Math.pow(x, 3) - 5 * Math.pow(x, 2) - x + 5 ) );
+        return ( 1 / divisor );
     }
 
     public static void main( String[] args ) {
