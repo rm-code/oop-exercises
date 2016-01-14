@@ -7,7 +7,7 @@ public class Exercise3 {
         this.random = random;
     }
 
-    public boolean isUniqueDraw( int[] results, int draw ) {
+    private boolean isUniqueDraw( int[] results, int draw ) {
         for ( int i = 0; i < results.length; i++ ) {
             if ( results[i] == draw ) {
                 return false;
@@ -16,7 +16,7 @@ public class Exercise3 {
         return true;
     }
 
-    public int drawRandomNumber( int[] results ) {
+    private int drawRandomNumber( int[] results ) {
         int draw;
         do {
             draw = random.nextInt( 49 ) + 1;
@@ -24,7 +24,7 @@ public class Exercise3 {
         return draw;
     }
 
-    public int[] play() {
+    private int[] play() {
         int[] results = new int[6]; // Storage for our six results.
         for ( int i = 0; i < results.length; i++ ) {
             results[i] = drawRandomNumber( results );
@@ -32,7 +32,7 @@ public class Exercise3 {
         return results;
     }
 
-    public void printResults( int[] results ) {
+    private void printResults( int[] results ) {
         StringBuilder txt = new StringBuilder( 32 );
         txt.append("LOTTERY NUMBERS:%n");
         for (int i = 0; i < results.length; i++ ) {
