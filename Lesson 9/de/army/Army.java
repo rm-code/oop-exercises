@@ -27,3 +27,6 @@ public class Army {
         Army army = new Army( 10 );
     }
 }
+
+// Zum Kompilieren    javac ordner/subordner/Klasse.java
+// Zum Ausführen dann java  ordner.subordner.Klasse

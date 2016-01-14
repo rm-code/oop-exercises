@@ -16,13 +16,7 @@ public class Soldier extends Human implements Sortable {
 
     public int isBigger( Sortable sortable ) {
         Soldier soldier = (Soldier) sortable;
-        if ( height < soldier.height ) {
-            return -1;
-        } else if ( height > soldier.height ) {
-            return 1;
-        } else {
-            return 0;
-        }
+        return height - soldier.height;
     }
 
     public String toString() {
