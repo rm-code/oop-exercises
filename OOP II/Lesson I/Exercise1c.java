@@ -6,11 +6,11 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
-public class HelloJavaFX extends Application {
+public class Exercise1a extends Application {
     @Override
     public void start( Stage primaryStage ) {
         Button btn = new Button();
-        btn.setText( "Say 'Hello JavaFX World'" );
+        btn.setText( "Lösung" );
         btn.setOnAction( new EventHandler<ActionEvent>() {
             @Override
             public void handle( ActionEvent event ) {
@@ -23,7 +23,7 @@ public class HelloJavaFX extends Application {
 
         Scene scene = new Scene( root, 300, 250 );
 
-        primaryStage.setTitle( "Hello JavaFX World!" );
+        primaryStage.setTitle( "Aufgabe 1" );
         primaryStage.setScene( scene );
         primaryStage.show();
     }
