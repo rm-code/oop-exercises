@@ -1,11 +1,8 @@
 import javafx.application.Application;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
-import javafx.stage.Modality;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
@@ -15,39 +12,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 
 public class Exercise7 extends Application {
-    private void createNewWindow( Stage primary ) {
-        Stage secondary = new Stage( StageStyle.UTILITY );
-        secondary.setAlwaysOnTop( true );
-        secondary.initOwner( primary );
-        secondary.initModality( Modality.WINDOW_MODAL );
-
-        Button buttonOk = new Button( "Ok" );
-        buttonOk.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent event ) {
-                Platform.exit();
-            }
-        });
-
-        Button buttonCancel = new Button( "Cancel" );
-        buttonCancel.setOnAction( new EventHandler<ActionEvent>() {
-            @Override
-            public void handle( ActionEvent event ) {
-                secondary.close();
-            }
-        });
-
-        HBox root = new HBox();
-        root.getChildren().addAll(
-            buttonOk, buttonCancel
-        );
-
-        Scene scene = new Scene( root );
-        secondary.setScene( scene );
-        secondary.show();
-        secondary.centerOnScreen();
-    }
-
     @Override
     public void start( Stage primaryStage ) {
         Label labelPrename  = new Label( "Prename: " );
