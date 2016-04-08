@@ -49,13 +49,13 @@ public class Exercise3 extends Application {
 
         // Add the children objects to our layout.
         root.setTop( buttonTop );
-        root.setAlignment( buttonTop, Pos.CENTER);
+        root.setAlignment( buttonTop, Pos.CENTER );
         root.setBottom( buttonBottom );
-        root.setAlignment( buttonBottom, Pos.CENTER);
+        root.setAlignment( buttonBottom, Pos.CENTER );
         root.setLeft( buttonLeft );
-        root.setAlignment( buttonLeft, Pos.CENTER);
+        root.setAlignment( buttonLeft, Pos.CENTER );
         root.setRight( buttonRight );
-        root.setAlignment( buttonRight, Pos.CENTER);
+        root.setAlignment( buttonRight, Pos.CENTER );
         root.setCenter( text );
 
         Scene scene = new Scene( root, 320, 240 );
