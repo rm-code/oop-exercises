@@ -1,4 +1,4 @@
-# OOP I - Exercises
+# OOP - Exercises
 
 Solutions to the exercises from the OOP course of my university. Keep in mind the tools we were allowed to use were restricted and ~~some~~ all of the code is a mess.
 
