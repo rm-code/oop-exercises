@@ -17,6 +17,7 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
 import javafx.geometry.Pos;
+import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -26,24 +27,19 @@ import javafx.stage.FileChooser.ExtensionFilter;
 public class Exercise9 extends Application {
     @Override
     public void start( Stage primaryStage ) {
-        Label labelPrename  = new Label( "Prename: " );
-        Label labelSurname  = new Label( "Surname: " );
-        Label labelAge      = new Label( "Age: " );
-        Label labelSex      = new Label( "Sex: " );
-        Label labelStreet   = new Label( "Street: " );
-        Label labelLocation = new Label( "Location: " );
-        Label labelPostcode = new Label( "Postcode: " );
+        final String[] LABEL_CONTENT = { "Prename: ", "Surname: ", "Age: ", "Sex: ", "Street: ", "Location: ", "Postcode: " };
+        final String[] FIELD_CONTENT = { "Max", "Mustermann", "35", "M", "Beispielstraße 39", "Beispielstadt", "12345 " };
 
-        TextField textFieldPrename  = new TextField( "Max" );
-        TextField textFieldSurname  = new TextField( "Mustermann" );
-        TextField textFieldAge      = new TextField( "35" );
-        TextField textFieldSex      = new TextField( "M" );
-        TextField textFieldStreet   = new TextField( "Beispielstraße 39" );
-        TextField textFieldLocation = new TextField( "Beispielstadt " );
-        TextField textFieldPostcode = new TextField( "12345" );
+        Label[] labels = new Label[LABEL_CONTENT.length];
+        TextField[] fields = new TextField[FIELD_CONTENT.length];
 
-        Button buttonOk = new Button( "Save" );
-        buttonOk.setOnAction( new EventHandler<ActionEvent>() {
+        for ( int i = 0; i < labels.length; i++ ) {
+            labels[i] = new Label( LABEL_CONTENT[i] );
+            fields[i] = new TextField( FIELD_CONTENT[i] );
+        }
+
+        Button buttonSave = new Button( "Save" );
+        buttonSave.setOnAction( new EventHandler<ActionEvent>() {
             @Override
             public void handle( ActionEvent event ) {
                 // Create a FileChooser object with a text filter applied.
@@ -55,15 +51,11 @@ public class Exercise9 extends Application {
 
                 // Only do something if the user has selected a (valid) file.
                 if ( selectedFile != null ) {
-                    List<String> output = Arrays.asList(
-                                                textFieldPrename.getText(),
-                                                textFieldSurname.getText(),
-                                                textFieldAge.getText(),
-                                                textFieldSex.getText(),
-                                                textFieldStreet.getText(),
-                                                textFieldLocation.getText(),
-                                                textFieldPostcode.getText()
-                                        );
+                    String[] lines = new String[fields.length];
+                    for ( int i = 0; i < fields.length; i++ ) {
+                        lines[i] = fields[i].getText();
+                    }
+                    List<String> output = Arrays.asList( lines );
                     try {
                         Files.write( selectedFile.toPath(), output, Charset.forName( "UTF-8" ));
                     } catch ( IOException foo ) {
@@ -87,13 +79,9 @@ public class Exercise9 extends Application {
                 if ( selectedFile != null ) {
                     try {
                         List<String> output = Files.readAllLines( selectedFile.toPath() );
-                        textFieldPrename.setText( output.get( 0 ));
-                        textFieldSurname.setText( output.get( 1 ));
-                        textFieldAge.setText( output.get( 2 ));
-                        textFieldSex.setText( output.get( 3 ));
-                        textFieldStreet.setText( output.get( 4 ));
-                        textFieldLocation.setText( output.get( 5 ));
-                        textFieldPostcode.setText( output.get( 6 ));
+                        for ( int i = 0; i < output.size(); i++ ) {
+                            fields[i].setText( output.get( i ));
+                        }
                     } catch ( IOException foo ) {
                         // Do something useful here.
                     }
@@ -104,40 +92,36 @@ public class Exercise9 extends Application {
         buttonCancel.setOnAction( new EventHandler<ActionEvent>() {
             @Override
             public void handle( ActionEvent event ) {
-                textFieldPrename.clear();
-                textFieldSurname.clear();
-                textFieldAge.clear();
-                textFieldSex.clear();
-                textFieldStreet.clear();
-                textFieldLocation.clear();
-                textFieldPostcode.clear();
+                for ( int i = 0; i < fields.length; i++ ) {
+                    fields[i].clear();
+                }
             }
         });
 
         BorderPane root = new BorderPane();
-        VBox vbox = new VBox();
+        VBox vboxL = new VBox();
+        VBox vboxR = new VBox();
         HBox hbox = new HBox();
 
-        vbox.getChildren().addAll(
-            labelPrename,  textFieldPrename,
-            labelSurname,  textFieldSurname,
-            labelAge,      textFieldAge,
-            labelSex,      textFieldSex,
-            labelStreet,   textFieldStreet,
-            labelLocation, textFieldLocation,
-            labelPostcode, textFieldPostcode
-        );
+        vboxL.getChildren().addAll( labels );
+        vboxL.setPadding( new Insets( 12 ));
+        vboxL.setSpacing( 10.0 );
+
+        vboxR.getChildren().addAll( fields );
+        vboxR.setPadding( new Insets( 10 ));
 
         hbox.getChildren().addAll(
-            buttonOk, buttonLoad, buttonCancel
+            buttonSave, buttonLoad, buttonCancel
         );
 
-        root.setTop( vbox );
-        root.setAlignment( vbox, Pos.CENTER );
+        root.setLeft( vboxL );
+        // root.setAlignment( vboxL, Pos.TOP_LEFT );
+        root.setCenter( vboxR );
+        // root.setAlignment( vboxR, Pos.TOP_RIGHT );
         root.setBottom( hbox );
         root.setAlignment( hbox, Pos.TOP_RIGHT );
 
-        Scene scene = new Scene( root, 520, 480 );
+        Scene scene = new Scene( root, 520, 280 );
 
         primaryStage.setTitle( "Contact Details" );
         primaryStage.setScene( scene );
