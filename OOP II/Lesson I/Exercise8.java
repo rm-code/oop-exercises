@@ -97,7 +97,7 @@ public class Exercise8 extends Application {
         root.setBottom( hbox );
         root.setAlignment( hbox, Pos.TOP_RIGHT );
 
-        Scene scene = new Scene( root, 520, 480 );
+        Scene scene = new Scene( root, 520, 280 );
 
         primaryStage.setTitle( "Contact Details" );
         primaryStage.setScene( scene );
