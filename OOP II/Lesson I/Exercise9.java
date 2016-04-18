@@ -25,6 +25,27 @@ import javafx.stage.FileChooser;
 import javafx.stage.FileChooser.ExtensionFilter;
 
 public class Exercise9 extends Application {
+    private void loadTemplate( Stage stage, TextField[] fields ) {
+        // Create a FileChooser object with a text filter applied.
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.getExtensionFilters().add( new ExtensionFilter( "Text Files", "*.txt" ));
+
+        // Show the dialog to the user and return the selected file.
+        File selectedFile = fileChooser.showOpenDialog( stage );
+
+        // Only do something if the user has selected a (valid) file.
+        if ( selectedFile != null ) {
+            try {
+                List<String> output = Files.readAllLines( selectedFile.toPath() );
+                for ( int i = 0; i < output.size(); i++ ) {
+                    fields[i].setText( output.get( i ));
+                }
+            } catch ( IOException foo ) {
+                // Do something useful here.
+            }
+        }
+    }
+
     @Override
     public void start( Stage primaryStage ) {
         final String[] LABEL_CONTENT = { "Prename: ", "Surname: ", "Age: ", "Sex: ", "Street: ", "Location: ", "Postcode: " };
@@ -37,6 +58,9 @@ public class Exercise9 extends Application {
             labels[i] = new Label( LABEL_CONTENT[i] );
             fields[i] = new TextField( FIELD_CONTENT[i] );
         }
+
+        // Ask the user to load a previously saved file.
+        loadTemplate( primaryStage, fields );
 
         Button buttonSave = new Button( "Save" );
         buttonSave.setOnAction( new EventHandler<ActionEvent>() {
@@ -68,24 +92,7 @@ public class Exercise9 extends Application {
         buttonLoad.setOnAction( new EventHandler<ActionEvent>() {
             @Override
             public void handle( ActionEvent event ) {
-                // Create a FileChooser object with a text filter applied.
-                FileChooser fileChooser = new FileChooser();
-                fileChooser.getExtensionFilters().add( new ExtensionFilter( "Text Files", "*.txt" ));
-
-                // Show the dialog to the user and return the selected file.
-                File selectedFile = fileChooser.showOpenDialog( primaryStage );
-
-                // Only do something if the user has selected a (valid) file.
-                if ( selectedFile != null ) {
-                    try {
-                        List<String> output = Files.readAllLines( selectedFile.toPath() );
-                        for ( int i = 0; i < output.size(); i++ ) {
-                            fields[i].setText( output.get( i ));
-                        }
-                    } catch ( IOException foo ) {
-                        // Do something useful here.
-                    }
-                }
+                loadTemplate( primaryStage, fields );
             }
         });
         Button buttonCancel = new Button( "Clear" );
