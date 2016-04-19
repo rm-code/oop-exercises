@@ -28,7 +28,7 @@ public class Exercise2 extends Application {
                 EventTarget target = event.getTarget();
                 if ( target instanceof Shape ) {
                     Shape shape = ( Shape ) target; // Cast EventTarget to Shape.
-                    shape.setFill( Color.ALICEBLUE );
+                    shape.setFill( Color.DARKGREEN );
                 }
             }
         });
