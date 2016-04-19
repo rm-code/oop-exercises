@@ -12,6 +12,10 @@ public class CustomEventHandler implements EventHandler<MouseEvent> {
     double mouseX;
     double mouseY;
 
+    private double clamp( double min, double val, double max ) {
+        return Math.max( min, Math.min( val, max ));
+    }
+
     @Override
     public void handle( MouseEvent event ) {
         if ( event.getEventType() == MouseEvent.MOUSE_PRESSED ) {
@@ -24,10 +28,16 @@ public class CustomEventHandler implements EventHandler<MouseEvent> {
             EventTarget target = event.getTarget();
             if ( target instanceof Shape ) {
                 Shape shape = ( Shape ) target;
-                double tmpX = event.getSceneX() - mouseX + objectX;
-                double tmpY = event.getSceneY() - mouseY + objectY;
 
-                // TODO: Prevent shapes from being moved offscreen.
+                // Clamp the target coordinates to the scene's dimensions to prevent
+                // shapes from being moved offscreen.
+                double targetX = clamp( 0, event.getSceneX(), shape.getScene().getWidth() );
+                double targetY = clamp( 0, event.getSceneY(), shape.getScene().getHeight() );
+
+                // Calculate the new coordinates for the shape.
+                double tmpX = targetX - mouseX + objectX;
+                double tmpY = targetY - mouseY + objectY;
+
                 shape.setTranslateX( tmpX );
                 shape.setTranslateY( tmpY );
             }
