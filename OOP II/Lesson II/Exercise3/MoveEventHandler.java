@@ -6,7 +6,7 @@ import javafx.scene.Node;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.shape.Shape;
 
-public class CustomEventHandler implements EventHandler<MouseEvent> {
+public class MoveEventHandler implements EventHandler<MouseEvent> {
     double objectX;
     double objectY;
     double mouseX;

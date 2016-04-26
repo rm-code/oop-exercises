@@ -19,39 +19,20 @@ public class Exercise3 extends Application {
         final Group root = new Group();
         Scene scene = new Scene( root, 300, 300 );
 
-        Shape[] shapes = new Shape[3];
-        shapes[0] = new Circle( scene.getWidth() * 0.5, 60, 40 );
-        shapes[1] = new Rectangle( 20, scene.getHeight() - 80, 60, 60 );
-        shapes[2] = new Ellipse( scene.getWidth() - 80, scene.getHeight() - 80, 60, 40 );
+        Shape[] shapes = {
+            new Circle( scene.getWidth() * 0.5, 60, 40 ),
+            new Rectangle( 20, scene.getHeight() - 80, 60, 60 ),
+            new Ellipse( scene.getWidth() - 80, scene.getHeight() - 80, 60, 40 )
+        };
 
-        CustomEventHandler handler = new CustomEventHandler();
+        MoveEventHandler  moveEventHandler  = new MoveEventHandler();
+        ColorCycleHandler colorCycleHandler = new ColorCycleHandler();
+        ColorResetHandler colorResetHandler = new ColorResetHandler();
 
-        root.setOnScroll( new EventHandler<ScrollEvent>() {
-            @Override
-            public void handle( ScrollEvent event ) {
-                EventTarget target = event.getTarget();
-                if ( target instanceof Shape ) {
-                    Shape shape = ( Shape ) target; // Cast EventTarget to Shape.
-                    shape.setFill( Color.DARKGREEN );
-                }
-            }
-        });
-        root.setOnMouseClicked( new EventHandler<MouseEvent>() {
-            @Override
-            public void handle( MouseEvent event ) {
-                if ( event.getButton().equals( MouseButton.PRIMARY )) {
-                    if ( event.getClickCount() == 2 ) {
-                        EventTarget target = event.getTarget();
-                        if ( target instanceof Shape ) {
-                            Shape shape = ( Shape ) target; // Cast EventTarget to Shape.
-                            shape.setFill( Color.BLACK );
-                        }
-                    }
-                }
-            }
-        });
-        root.setOnMousePressed( handler );
-        root.setOnMouseDragged( handler );
+        root.setOnScroll( colorCycleHandler );
+        root.setOnMouseClicked( colorResetHandler );
+        root.setOnMousePressed( moveEventHandler );
+        root.setOnMouseDragged( moveEventHandler );
 
         root.getChildren().addAll( shapes[0], shapes[1], shapes[2] );
         primaryStage.setTitle( "Circle Drawing" );
