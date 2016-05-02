@@ -1,20 +1,11 @@
 package Exercise7;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
-import javafx.event.EventTarget;
-import javafx.geometry.Insets;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.input.TransferMode;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -62,45 +53,9 @@ public class Exercise7 extends Application {
 
         sp.getChildren().addAll( bodyView, clothesView );
 
-        fp.setOnDragDetected( new EventHandler<MouseEvent>() {
-            public void handle( MouseEvent event ) {
-                Dragboard db = fp.startDragAndDrop( TransferMode.ANY );
-
-                ClipboardContent content = new ClipboardContent();
-                EventTarget target = event.getTarget();
-                if ( target instanceof ImageView ) {
-                    ImageView view = (ImageView) target;
-                    content.putImage( view.getImage() );
-                }
-
-                db.setContent(content);
-                event.consume();
-            }
-        });
-
-        clothesView.setOnDragOver( new EventHandler<DragEvent>() {
-            public void handle( DragEvent event ) {
-                if ( event.getGestureSource() != clothesView && event.getDragboard().hasImage() ) {
-                    event.acceptTransferModes( TransferMode.ANY );
-                }
-                event.consume();
-            }
-        });
-
-        clothesView.setOnDragDropped( new EventHandler<DragEvent>() {
-            public void handle( DragEvent event ) {
-                Dragboard db = event.getDragboard();
-                boolean success = false;
-                if ( db.hasImage() ) {
-                	clothesView.setImage( db.getImage() );
-                    success = true;
-                }
-
-                event.setDropCompleted(success);
-
-                event.consume();
-            }
-        });
+        fp.setOnDragDetected( new DragDetectedHandler() );
+        clothesView.setOnDragOver( new DragOverHandler( clothesView ));
+        clothesView.setOnDragDropped( new DragDroppedHandler( clothesView ));
 
         Scene scene = new Scene( vbox );
 
