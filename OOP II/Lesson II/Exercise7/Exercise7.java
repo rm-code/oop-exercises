@@ -22,13 +22,15 @@ import javafx.stage.Stage;
 public class Exercise7 extends Application {
     public FlowPane addFlowPane() {
         FlowPane flow = new FlowPane();
-        flow.setPrefWrapLength( 1100 );
+        flow.setPrefWrapLength( 300 );
 
         ImageView pages[] = new ImageView[4];
         for ( int i = 0; i < 4; i++ ) {
             Image tmp = new Image( getClass().getResource( "images/clothes/equipped/dress" + ( i + 1 ) + ".png" ).toExternalForm() );
             pages[i] = new ImageView();
             pages[i].setImage( tmp );
+            pages[i].setFitWidth( tmp.getWidth() * 0.5 );
+            pages[i].setFitHeight( tmp.getHeight() * 0.5 );
             flow.getChildren().add( pages[i] );
         }
 
