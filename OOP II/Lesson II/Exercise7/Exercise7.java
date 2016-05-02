@@ -22,7 +22,6 @@ import javafx.stage.Stage;
 public class Exercise7 extends Application {
     public FlowPane addFlowPane() {
         FlowPane flow = new FlowPane();
-        flow.setPadding( new Insets( -100, 0, 5, 0 ));
         flow.setPrefWrapLength( 1100 );
 
         ImageView pages[] = new ImageView[4];
@@ -50,10 +49,10 @@ public class Exercise7 extends Application {
         Image body = new Image( getClass().getResource( "images/body.png" ).toExternalForm());
         ImageView bodyView = new ImageView();
         bodyView.setImage( body );
-        
+
         ImageView clothesView = new ImageView();
         clothesView.setImage( body );
-        
+
         hbox.getChildren().add( fp );
         hbox.getChildren().add( sp );
         vbox.getChildren().add( headerView );
@@ -61,43 +60,40 @@ public class Exercise7 extends Application {
 
         sp.getChildren().addAll( bodyView, clothesView );
 
-        fp.setOnDragDetected(new EventHandler<MouseEvent>() {
-            public void handle(MouseEvent event) {
-                Dragboard db = fp.startDragAndDrop(TransferMode.ANY);
+        fp.setOnDragDetected( new EventHandler<MouseEvent>() {
+            public void handle( MouseEvent event ) {
+                Dragboard db = fp.startDragAndDrop( TransferMode.ANY );
 
                 ClipboardContent content = new ClipboardContent();
                 EventTarget target = event.getTarget();
                 if ( target instanceof ImageView ) {
-                    content.putImage( ((ImageView) target).getImage() );
+                    ImageView view = (ImageView) target;
+                    content.putImage( view.getImage() );
                 }
 
                 db.setContent(content);
                 event.consume();
             }
         });
-        
-        clothesView.setOnDragOver(new EventHandler<DragEvent>() {
-            public void handle(DragEvent event) {
-                if (event.getGestureSource() != clothesView && event.getDragboard().hasImage()) {
-                	/* allow for both copying and moving, whatever user chooses */
-                    event.acceptTransferModes(TransferMode.ANY);
+
+        clothesView.setOnDragOver( new EventHandler<DragEvent>() {
+            public void handle( DragEvent event ) {
+                if ( event.getGestureSource() != clothesView && event.getDragboard().hasImage() ) {
+                    event.acceptTransferModes( TransferMode.ANY );
                 }
-                
                 event.consume();
             }
         });
 
-        clothesView.setOnDragDropped(new EventHandler<DragEvent>() {
-            public void handle(DragEvent event) {
-            	System.out.println("Foo");
+        clothesView.setOnDragDropped( new EventHandler<DragEvent>() {
+            public void handle( DragEvent event ) {
                 Dragboard db = event.getDragboard();
                 boolean success = false;
-                if (db.hasImage()) {
+                if ( db.hasImage() ) {
                 	clothesView.setImage( db.getImage() );
                     success = true;
                 }
-                /* let the source know whether the string was successfully
-                * transferred and used */
+
                 event.setDropCompleted(success);
 
                 event.consume();
