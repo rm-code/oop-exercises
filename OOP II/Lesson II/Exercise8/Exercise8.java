@@ -1,12 +1,10 @@
 package Exercise8;
 
 import javafx.application.Application;
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.HBox;
@@ -39,8 +37,6 @@ public class Exercise8 extends Application {
         StackPane sp = new StackPane();
         FlowPane fp = addFlowPane();
 
-        SimpleBooleanProperty altPressed = new SimpleBooleanProperty();
-
         Image flowers = new Image( getClass().getResource( "images/ui/flowers.jpg" ).toExternalForm());
         ImageView headerView = new ImageView();
         headerView .setImage( flowers );
@@ -65,11 +61,8 @@ public class Exercise8 extends Application {
 
         Scene scene = new Scene( vbox );
 
-        EventHandler<KeyEvent> keyEventHandler = new KeyHandler( altPressed );
-        EventHandler<MouseEvent> windowEventHandler = new DragWindowHandler( primaryStage, altPressed );
+        EventHandler<MouseEvent> windowEventHandler = new DragWindowHandler( primaryStage );
 
-        scene.addEventFilter(KeyEvent.KEY_PRESSED,  keyEventHandler);
-        scene.addEventFilter(KeyEvent.KEY_RELEASED, keyEventHandler);
         scene.setOnMousePressed( windowEventHandler );
         scene.setOnMouseDragged( windowEventHandler );
 

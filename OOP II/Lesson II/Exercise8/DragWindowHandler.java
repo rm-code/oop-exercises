@@ -1,12 +1,10 @@
 package Exercise8;
 
-import javafx.beans.property.SimpleBooleanProperty;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class DragWindowHandler implements EventHandler<MouseEvent> {
-    SimpleBooleanProperty altPressed;
     Stage stage;
 
     private double xOffset;
@@ -14,14 +12,13 @@ public class DragWindowHandler implements EventHandler<MouseEvent> {
     private double mouseX;
     private double mouseY;
 
-    public DragWindowHandler( Stage stage, SimpleBooleanProperty altPressed ) {
+    public DragWindowHandler( Stage stage ) {
         this.stage = stage;
-        this.altPressed = altPressed;
     }
 
     @Override
     public void handle( MouseEvent event ) {
-        if ( altPressed.getValue() == true ) {
+        if ( event.isAltDown() ) {
             if ( event.getEventType() == MouseEvent.MOUSE_PRESSED ) {
                 xOffset = stage.getX() - event.getScreenX();
                 yOffset = stage.getY() - event.getScreenY();
