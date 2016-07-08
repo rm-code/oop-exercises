@@ -56,8 +56,10 @@ public class Exercise8 extends Application {
         sp.getChildren().addAll( bodyView, clothesView );
 
         fp.setOnDragDetected( new DragDetectedHandler() );
-        clothesView.setOnDragOver( new DragOverHandler( clothesView ));
-        clothesView.setOnDragDropped( new DragDroppedHandler( clothesView ));
+        clothesView.setOnDragOver( new DragOverHandler() );
+        clothesView.setOnDragDropped( new DragDroppedHandler() );
+        clothesView.setOnDragEntered( new DragEnteredHandler());
+        clothesView.setOnDragExited( new DragExitedHandler() );
 
         Scene scene = new Scene( vbox );
 
