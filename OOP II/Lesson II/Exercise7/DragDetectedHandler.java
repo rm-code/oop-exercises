@@ -14,13 +14,21 @@ public class DragDetectedHandler implements EventHandler<MouseEvent> {
         EventTarget target = event.getTarget();
         if ( target instanceof ImageView ) {
             Node node = (Node) target;
-            Dragboard db = node.startDragAndDrop( TransferMode.ANY );
 
+            // Dragboard is a drag and drop specific Clipboard.
+            // TransferMode determines how the image is moved to the target.
+            Dragboard dragboard = node.startDragAndDrop( TransferMode.ANY );
+
+            // ClipboardContent represents the content of the OS clipboard.
             ClipboardContent content = new ClipboardContent();
 
             ImageView view = (ImageView) target;
+
+            // Save image as clipboard content.
             content.putImage( view.getImage() );
-            db.setContent( content );
+
+            // Save the clipboard content in the drag specific clipboard (aka dragboard).
+            dragboard.setContent( content );
             event.consume();
         }
     }
