@@ -47,13 +47,43 @@ public class Main extends Application {
 
         HBox whitePane = new HBox();
         HBox blackPane = new HBox();
+        HBox subPane1 = new HBox();
+        HBox subPane2 = new HBox();
+        HBox subPane3 = new HBox();
+        HBox subPane4 = new HBox();
+
         StackPane vertical = new StackPane();
 
         whitePane.getChildren().addAll( whiteKeys );
-        whitePane.setSpacing( 10 );
+        whitePane.setSpacing( 5 );
 
-        blackPane.getChildren().addAll( blackKeys );
-        blackPane.setSpacing( 15 );
+        subPane1.setTranslateX( 40 );
+        subPane1.getChildren().add( blackKeys.get( 0 ));
+        subPane1.getChildren().add( blackKeys.get( 1 ));
+        subPane1.setPickOnBounds( false );
+        subPane1.setSpacing( 5 );
+
+        subPane2.setTranslateX( 80 );
+        subPane2.getChildren().add( blackKeys.get( 2 ));
+        subPane2.getChildren().add( blackKeys.get( 3 ));
+        subPane2.getChildren().add( blackKeys.get( 4 ));
+        subPane2.setPickOnBounds( false );
+        subPane2.setSpacing( 5 );
+
+        subPane3.setTranslateX( 140 );
+        subPane3.getChildren().add( blackKeys.get( 5 ));
+        subPane3.getChildren().add( blackKeys.get( 6 ));
+        subPane3.setPickOnBounds( false );
+        subPane3.setSpacing( 5 );
+
+        subPane4.setTranslateX( 210 );
+        subPane4.getChildren().add( blackKeys.get( 7 ));
+        subPane4.getChildren().add( blackKeys.get( 8 ));
+        subPane4.getChildren().add( blackKeys.get( 9 ));
+        subPane4.setPickOnBounds( false );
+        subPane4.setSpacing( 5 );
+
+        blackPane.getChildren().addAll( subPane1, subPane2, subPane3, subPane4 );
         blackPane.setPickOnBounds( false );
 
         vertical.getChildren().addAll( whitePane, blackPane );
