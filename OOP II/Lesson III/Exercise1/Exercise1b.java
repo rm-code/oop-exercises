@@ -22,14 +22,11 @@ public class Exercise1b extends Application {
         rectangle.setX( 50 );
         rectangle.setY( 50 );
 
-        rectangle.hoverProperty().addListener( new ChangeListener<Boolean>() {
-            @Override
-            public void changed( ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue ) {
-                if ( newValue == false ) {
-                    rectangle.setEffect( null );
-                } else if ( newValue == true ) {
-                    rectangle.setEffect( new DropShadow( 2, 5, 5, Color.BLACK ));
-                }
+        rectangle.hoverProperty().addListener(( observable, oldValue, newValue ) -> {
+            if ( newValue == false ) {
+                rectangle.setEffect( null );
+            } else if ( newValue == true ) {
+                rectangle.setEffect( new DropShadow( 2, 5, 5, Color.BLACK ));
             }
         });
 
