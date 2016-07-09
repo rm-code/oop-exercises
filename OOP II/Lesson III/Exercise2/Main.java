@@ -107,12 +107,21 @@ public class Main extends Application {
             for ( Key key: whiteKeys )
                 if ( event.getCode() == key.getCode() ) {
                     key.playSound();
+                    key.press();
                 }
             for ( Key key: blackKeys )
                 if ( event.getCode() == key.getCode() ) {
                     key.playSound();
+                    key.press();
                 }
         } );
+
+        scene.setOnKeyReleased( event -> {
+            for ( Key key: whiteKeys )
+                key.release();
+            for ( Key key: blackKeys )
+                key.release();
+        });
 
         primaryStage.setScene( scene );
         primaryStage.sizeToScene();
